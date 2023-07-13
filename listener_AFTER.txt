@@ -1,0 +1,74 @@
+SQL> select * from global_name;
+
+GLOBAL_NAME
+--------------------------------------------------------------------------------
+APEXTST1
+
+SQL> exec dbms_xdb.setlistenerendpoint(endpoint => dbms_xdb.XDB_ENDPOINT_HTTP, host => '127.0.0.1', port => 8080, protocol => dbms_xdb.XDB_PROTOCOL_TCP);
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> exit
+Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.13.0.0.0
+[oracle@hrvltstdb7602 ~]$ lsnrctl status
+
+LSNRCTL for Linux: Version 19.0.0.0.0 - Production on 29-DEC-2021 13:14:11
+
+Copyright (c) 1991, 2021, Oracle.  All rights reserved.
+
+Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 19.0.0.0.0 - Production
+Start Date                15-DEC-2021 23:08:37
+Uptime                    13 days 14 hr. 5 min. 34 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /u02/app/19.3.0/grid/network/admin/listener.ora
+Listener Log File         /u02/app/19.3.0/diag/tnslsnr/hrvltstdb7602/listener/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=hrvltstdb7602.washdc.state.sbu)(PORT=1521)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=8080))(Presentation=HTTP)(Session=RAW))
+Services Summary...
+Service "+ASM" has 1 instance(s).
+  Instance "+ASM", status READY, has 1 handler(s) for this service...
+Service "+ASM_DATA" has 1 instance(s).
+  Instance "+ASM", status READY, has 1 handler(s) for this service...
+Service "+ASM_PRD_DATA" has 1 instance(s).
+  Instance "+ASM", status READY, has 1 handler(s) for this service...
+Service "+ASM_PRD_FRA" has 1 instance(s).
+  Instance "+ASM", status READY, has 1 handler(s) for this service...
+Service "APEXTST1.HR.STATE.SBU" has 1 instance(s).
+  Instance "APEXTST1", status READY, has 1 handler(s) for this service...
+Service "APEXTST1XDB.HR.STATE.SBU" has 1 instance(s).
+  Instance "APEXTST1", status READY, has 1 handler(s) for this service...
+Service "EODMASK.HR.STATE.SBU" has 1 instance(s).
+  Instance "EODMASK", status READY, has 1 handler(s) for this service...
+Service "OPSMASK.HR.STATE.SBU" has 1 instance(s).
+  Instance "OPSMASK", status READY, has 1 handler(s) for this service...
+Service "PRDMASK.HR.STATE.SBU" has 1 instance(s).
+  Instance "PRDMASK", status READY, has 1 handler(s) for this service...
+Service "SQLMASK.HR.STATE.SBU" has 1 instance(s).
+  Instance "SQLMASK", status READY, has 1 handler(s) for this service...
+Service "SQLMASKXDB.HR.STATE.SBU" has 1 instance(s).
+  Instance "SQLMASK", status READY, has 1 handler(s) for this service...
+Service "apextst1srvc.HR.STATE.SBU" has 1 instance(s).
+  Instance "APEXTST1", status READY, has 1 handler(s) for this service...
+Service "eodmasksrvc.HR.STATE.SBU" has 1 instance(s).
+  Instance "EODMASK", status READY, has 1 handler(s) for this service...
+Service "opsmasksrvc.HR.STATE.SBU" has 1 instance(s).
+  Instance "OPSMASK", status READY, has 1 handler(s) for this service...
+Service "prdmasksrvc.HR.STATE.SBU" has 1 instance(s).
+  Instance "PRDMASK", status READY, has 1 handler(s) for this service...
+Service "sqlmasksrvc.HR.STATE.SBU" has 1 instance(s).
+  Instance "SQLMASK", status READY, has 1 handler(s) for this service...
+The command completed successfully
+[oracle@hrvltstdb7602 ~]$

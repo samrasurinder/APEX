@@ -1,0 +1,33 @@
+SQL> select dbms_xdb.gethttpport from dual;
+
+GETHTTPPORT
+-----------
+       8080
+
+SQL> exec dbms_xdb.sethttpport(0);
+
+PL/SQL procedure successfully completed.
+
+SQL> select dbms_xdb.gethttpport from dual;
+
+GETHTTPPORT
+-----------
+          0
+
+SQL> exec dbms_xdb.sethttpport(8080);
+
+PL/SQL procedure successfully completed.
+
+SQL> select dbms_xdb.gethttpport from dual;
+
+GETHTTPPORT
+-----------
+       8080
+
+SQL> alter system register;
+
+System altered.
+============================
+How to Setup XDB Protocol Server: FTP, HTTP, WebDAV (Doc ID 362540.1)
+
+How to Configure the APEX Listener / Oracle REST Data Services with the Weblogic Server to Run Through the OHS Port (Doc ID 1530459.1)

@@ -1,0 +1,121 @@
+
+-- APEX TST
+
+1. URL
+   http://hrvltstdb7602.hr.state.sbu:8080/apex
+
+http://hrvltstdb7602.washdc.state.sbu:8080/apex
+
+   http://hrvltstdb7602.hr.state.sbu:8080/apex/admin
+
+2. Workspace = APEX   , INTERNAL/ADMIN/Testing123#Testing123#
+           Workspace = PRAS        SURINDER/Secureuser01#
+   samras@washdc.state.sbu/Jumpstart123# <-- 05242022
+3. Password = Testing123#Testing123#
+
+4. Oracle DOC:-
+   https://docs.oracle.com/cd/E11882_01/appdev.112/e11947/sec_authentication.htm#HTMDB25767
+
+
+[Yesterday 5:10 PM] Pandey, Shawn
+    EWWASHDCDC01.washdc.state.sbu
+
+​   ldap port = 3268
+
+
+CN=%LDAP_USER%,OU=Service Accounts,OU=TST Environment,OU=HR,DC=washdc,DC=state,DC=sbu
+
+
+LDAP=hrsvctstldap
+
+TSTE,L2!kLv53:k
+
+DN string must contain %LDAP_USER%
+
+	
+Error Message
+1 error has occurred
+Authentication failed
+ORA-31204: DBMS_LDAP: PL/SQL - Invalid LDAP Session.
+
+
+18.2.0.00.12
+*****************************************
+
+EWWASHDCDC01.washdc.state.sbu
+CN=hrsvctstldapasp,OU=Service Accounts,OU=TST Environment,OU=HR,DC=washdc,DC=state,DC=sbu
+
+TSTQB6:5:xJ*n0e
+
+================================================================================
+Application Express
+Details	
+Product Build	18.2.0.00.12
+Schema Compatibility	2018.05.24
+Last DDL Time	11/27/2020 01:20:18 PM
+Host Schema	ANONYMOUS
+Application Owner	APEX_180200
+Workspace ID	1481543608544773
+Workspace Name	PRAS
+Current User	SURINDER
+Language Preference	en
+Current Time (on server)	09/23/2021 05:23:45 PM -04:00
+CGI Environment	
+APEX_LISTENER_VERSION	
+PLSQL_GATEWAY	WebDb
+GATEWAY_IVERSION	2
+SERVER_SOFTWARE	Oracle Embedded PL/SQL Gateway/19.0.0.0.0
+GATEWAY_INTERFACE	CGI/1.1
+SERVER_PORT	8080
+SERVER_NAME	XDB HTTP Server
+REQUEST_METHOD	GET
+QUERY_STRING	p=4350:9:9740044185871:::::&p_dialog_cs=BaCVe-PhZgx42TIw13aEMUJVxlngVFT15U5DVD8AtJ6U4unj3jX_-WbDb0roUZDFLgwckbEs49DP2Gfb181XVw
+PATH_INFO	/f
+SCRIPT_NAME	/apex
+REMOTE_ADDR	10.8.157.158
+SERVER_PROTOCOL	HTTP/1.1
+REQUEST_PROTOCOL	HTTP
+REMOTE_USER	ANONYMOUS
+HTTP_USER_AGENT	mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/93.0.4577.63 safari/537.36 edg/93.0.961.38
+HTTP_HOST	hrvltstdb7602.hr.state.sbu:8080
+HTTP_ACCEPT_ENCODING	gzip,deflate
+HTTP_ACCEPT_LANGUAGE	en-US,en;q=0.9
+HTTP_ORACLE_ECID	
+WEB_AUTHENT_PREFIX	
+DAD_NAME	apex
+DOC_ACCESS_PATH	docs
+DOCUMENT_TABLE	wwv_flow_file_objects$
+PATH_ALIAS	r
+REQUEST_CHARSET	AL32UTF8
+REQUEST_IANA_CHARSET	UTF-8
+SCRIPT_PREFIX	
+Database Version	
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Character Set	
+NLS_CHARACTERSET:	AL32UTF8
+DAD CHARACTERSET:	UTF-8
+JOB_QUEUE_PROCESSES:	320
+
+Password123#
+***************************
+SQL> select * from global_name;
+
+GLOBAL_NAME
+--------------------------------------------------------------------------------
+APEXTST1
+
+SQL> exec dbms_xdb.setlistenerendpoint(endpoint => dbms_xdb.XDB_ENDPOINT_HTTP, host => '127.0.0.1', port => 8080, protocol => dbms_xdb.XDB_PROTOCOL_TCP);
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+
+exec dbms_xdb.setlistenerendpoint(endpoint => dbms_xdb.XDB_ENDPOINT_HTTP, host => '127.0.0.1', port => 8080, protocol => dbms_xdb.XDB_PROTOCOL_TCP);
+
+*******************************
+Original:-
+
+exec dbms_xdb.setlistenerendpoint(endpoint => dbms_xdb.XDB_ENDPOINT_HTTP, host => 'hrvltstdb7602.washdc.state.sbu', port => 8080, protocol => dbms_xdb.XDB_PROTOCOL_TCP);

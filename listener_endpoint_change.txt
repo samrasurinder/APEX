@@ -1,0 +1,21 @@
+SQL> select * from global_name;
+
+GLOBAL_NAME
+--------------------------------------------------------------------------------
+APEXTST1
+
+SQL> exec dbms_xdb.setlistenerendpoint(endpoint => dbms_xdb.XDB_ENDPOINT_HTTP, host => '127.0.0.1', port => 8080, protocol => dbms_xdb.XDB_PROTOCOL_TCP);
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+
+exec dbms_xdb.setlistenerendpoint(endpoint => dbms_xdb.XDB_ENDPOINT_HTTP, host => '127.0.0.1', port => 8080, protocol => dbms_xdb.XDB_PROTOCOL_TCP);
+
+*******************************
+Original:-
+
+exec dbms_xdb.setlistenerendpoint(endpoint => dbms_xdb.XDB_ENDPOINT_HTTP, host => 'hrvltstdb7602.washdc.state.sbu', port => 8080, protocol => dbms_xdb.XDB_PROTOCOL_TCP);

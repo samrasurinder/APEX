@@ -1,0 +1,68 @@
+declare
+
+begin
+IF APEX_LDAP.AUTHENTICATE(
+p_username =>'samras@state.gov',
+p_password =>'Amritsar012345#',
+p_search_base => 'cn=hrsvctstldapasp,dc=us,dc=washdc,dc=state, dc=sbu',
+p_host => 'EWWASHDCDC01.washdc.state.sbu',
+p_port => 3268)
+THEN
+dbms_output.put_line('authenticated');
+ELSE
+dbms_output.put_line('authentication failed');
+END IF;
+end;
+/
+
+
+DECLARE
+vSession DBMS_LDAP.session;
+vResult PLS_INTEGER;
+BEGIN
+DBMS_LDAP.use_exception := TRUE;
+vSession := DBMS_LDAP.init
+( hostname => 'ldapserver.<domain>', portnum => 389 );
+vResult := DBMS_LDAP.simple_bind_s
+( ld => vSession
+, dn => 'cn=tester,cn=users,dc=us,dc=<company_name>,dc=com'
+, passwd => 'testerpw'
+);
+DBMS_Output.put_line('User authenticated!');
+vResult := DBMS_LDAP.unbind_s(vSession);
+END;
+/
+
+
+begin
+IF APEX_LDAP.AUTHENTICATE(
+p_username =>'hrsvctstldapasp',
+p_password =>'TSTQB6:5:xJ*n0e',
+p_search_base => 'cn=hrsvctstldapasp,dc=us,dc=washdc,dc=state, dc=sbu',
+p_host => 'EWWASHDCDC01.washdc.state.sbu',
+p_port => 3268)
+THEN
+dbms_output.put_line('authenticated');
+ELSE
+dbms_output.put_line('authentication failed');
+END IF;
+end;
+/
+************************************
+DECLARE
+vSession DBMS_LDAP.session;
+vResult PLS_INTEGER;
+BEGIN
+DBMS_LDAP.use_exception := TRUE;
+vSession := DBMS_LDAP.init
+( hostname => 'EWWASHDCDC01.washdc.state.sbu', portnum => 3268 );
+vResult := DBMS_LDAP.simple_bind_s
+( ld => vSession
+, dn => 'cn=hrsvctstldapasp,dc=us,dc=washdc,dc=state, dc=sbu'
+, passwd => 'TSTQB6:5:xJ*n0e'
+);
+DBMS_Output.put_line('User authenticated!');
+vResult := DBMS_LDAP.unbind_s(vSession);
+END;
+/
+******************************************************************
